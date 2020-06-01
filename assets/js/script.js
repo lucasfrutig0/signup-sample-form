@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputEmailNameEl = document.querySelector('input[name="email"]');
   const inputPassNameEl = document.querySelector('input[name="password"]');
 
+  const iconError = document.querySelectorAll(".icon-error");
+  const iconErrorArr = Array.from(iconError);
+
   const smallFirstEl = document.querySelector(".first-warning");
   const smallLastEl = document.querySelector(".last-warning");
   const smallEmailEl = document.querySelector(".email-warning");
@@ -21,22 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     !firstName
       ? ((smallFirstEl.textContent = `First Name cannot be empty`),
-        inputFirstNameEl.classList.add("warning"))
+        inputFirstNameEl.classList.add("warning"),
+        (iconErrorArr[0].style.display = "block"))
       : ((smallFirstEl.textContent = ``),
         inputFirstNameEl.classList.remove("warning"));
     !lastName
       ? ((smallLastEl.textContent = `Last Name cannot be empty`),
-        inputLastNameEl.classList.add("warning"))
+        inputLastNameEl.classList.add("warning"),
+        (iconErrorArr[1].style.display = "block"))
       : ((smallLastEl.textContent = ``),
         inputLastNameEl.classList.remove("warning"));
     !email || !email.match(pattern)
       ? ((smallEmailEl.textContent = `Looks like it is not an email address`),
-        inputEmailNameEl.classList.add("warning"))
+        inputEmailNameEl.classList.add("warning"),
+        (iconErrorArr[2].style.display = "block"))
       : ((smallLastEl.textContent = ``),
         inputLastNameEl.classList.remove("warning"));
     !password
       ? ((smallPassEl.textContent = `Password cannot be empty`),
-        inputPassNameEl.classList.add("warning"))
+        inputPassNameEl.classList.add("warning"),
+        (iconErrorArr[3].style.display = "block"))
       : ((smallLastEl.textContent = ``),
         inputLastNameEl.classList.remove("warning"));
   });
